@@ -1,1 +1,1 @@
-python lyra_bot.py 
+python ./lyra_bot.py 
