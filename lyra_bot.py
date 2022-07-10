@@ -1,34 +1,44 @@
 #!/usr/bin/python3
 import os
 
+import logging
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
+from aiogram.utils.exceptions import ValidationError
 from dotenv import load_dotenv
 
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
 # load environment variables from .env
 load_dotenv()
 
 
 token: str = os.getenv("token")
-if not token:
-    print("Error: token not found")
 
-bot: Bot = Bot(token)
+try:
+    bot: Bot = Bot(token)
+except ValidationError as e:
+    logging.critical(f"Error: app was shut down [{e}]")
+    raise
+
+
 dp: Dispatcher = Dispatcher(bot)
 
 
 async def on_startup(_):
-    print("я прокинулась")
+    logging.info("app was up")
 
 
 async def on_shutdown(_):
-    print("я спати")
+    logging.info("app was down")
 
 
 @dp.message_handler()
 async def echo_send(message: types.Message):
+    logging.info(f"get message: {message.text}")
     if message.text == "БООДЯЯЯ":
         await message.answer("ПЕГАСИК")
     if message.text == "спокс":
