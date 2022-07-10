@@ -1,1 +1,1 @@
-python ./lyra_bot.py 
+worker: python3 ./lyra_bot.py 
