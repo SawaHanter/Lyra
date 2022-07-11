@@ -43,6 +43,16 @@ async def echo_send(message: types.Message):
         await message.answer("ПЕГАСИК")
     if message.text == "спокс":
         await message.reply("і тобі, лапко")
+    if message.text == "Ранку":
+        await message.reply("випий кави")
+    if message.text == "Грац =)":
+        await message.reply("плюсую")
+    if message.text == "Утра":
+        await message.reply("а зараз точно утро?")
+    if message.text == "Я тоже.":
+        await message.reply("і мене не забудьте")
+    if message.text == "Бодя":
+        await message.reply("........)")
     if message.text == "доброго ранку, сонечки":
         await message.reply("і тобі, лапко")
 
