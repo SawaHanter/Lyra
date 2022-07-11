@@ -28,12 +28,23 @@ except ValidationError as e:
 dp: Dispatcher = Dispatcher(bot)
 
 
+# on,of bot
+
+
 async def on_startup(_):
     logging.info("app was up")
 
 
 async def on_shutdown(_):
     logging.info("app was down")
+
+
+# new user joied
+
+
+@dp.message_handler(content_types=["new_chat_members"])
+async def on_user_joined(message: types.message):
+    await message.text == "привіт людина"
 
 
 @dp.message_handler()
